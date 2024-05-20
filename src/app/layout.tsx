@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { ThemeProvider } from "@/components/theme-provider"
 import SideNavLayout from "@/components/sideNavlayout";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -21,11 +21,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <SideNavLayout>
-          {children}
-        </SideNavLayout>
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <SideNavLayout>
+            {children}
+          </SideNavLayout>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
