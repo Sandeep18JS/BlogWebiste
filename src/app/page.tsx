@@ -49,20 +49,20 @@ const page = async () => {
           <h1 className='font-semibold text-3xl '>Recent Tutorials
           </h1>
           <div className='grid grid-cols-3 relative '>
-            {tutorialdata.map((blog) => (
-              <div key={blog._id} className='w-[350px] space-y-2 flex flex-col'>
+            {tutorialdata.map((tutorial) => (
+              <div key={tutorial._id} className='w-[350px] space-y-2 flex flex-col'>
                 <Image
-                  src={blog.imageUrl}
+                  src={tutorial.imageUrl}
                   width={500}
                   height={500}
                   alt="tshirt"
                   quality={100}
                   className='rounded-[10px]  w-[350px] h-[250px]'
                 />
-                <Link href={`/blogs/${blog.slug}`} >
-                  <h1 className='font-semibold text-[18px] hover:underline'>{blog.title}</h1>
+                <Link href={`/tutorials/${tutorial.slug}`} >
+                  <h1 className='font-semibold text-[18px] hover:underline'>{tutorial.title}</h1>
                 </Link>
-                <p className='font-light text-gray-700 text-sm text-wrap'>{blog.description}</p>
+                <p className='font-light text-gray-700 dark:text-white text-sm text-wrap'>{tutorial.description}</p>
               </div>
 
             ))}
@@ -86,7 +86,7 @@ const page = async () => {
                 <Link href={`/blogs/${blog.slug}`} >
                   <h1 className='font-semibold text-[18px] hover:underline'>{blog.title}</h1>
                 </Link>
-                <p className='font-light text-gray-700 text-sm text-wrap'>{blog.description}</p>
+                <p className='font-light text-gray-700 dark:text-white text-sm text-wrap'>{blog.description}</p>
               </div>
 
             ))}

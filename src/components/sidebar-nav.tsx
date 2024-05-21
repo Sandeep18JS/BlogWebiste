@@ -48,7 +48,7 @@ export const SidebarNav = async () => {
                 {blogdata.map((link) => (
                     <div key={link._id} className={cn("pb-3 pl-1")}>
 
-                        <div className="grid grid-flow-row auto-rows-max text-sm text-gray-700">
+                        <div className="grid grid-flow-row auto-rows-max text-sm text-gray-700 dark:text-white">
                             <Link
                                 href={`/blogs/${link.slug}`}
                                 className={cn(
@@ -73,7 +73,7 @@ export const SidebarNav = async () => {
                 {tutorialdata.map((link) => (
                     <div key={link._id} className={cn("pb-3 pl-1")}>
 
-                        <div className="grid grid-flow-row auto-rows-max text-sm text-gray-700">
+                        <div className="grid grid-flow-row auto-rows-max text-sm text-gray-700  dark:text-white">
                             <Link
                                 href={`/tutorials/${link.slug}`}
                                 className={cn(

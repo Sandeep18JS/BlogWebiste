@@ -35,7 +35,7 @@ export interface simplifiedBlog {
 const page = async ({ params }: { params: { slug: string } }) => {
     const data: simplifiedBlog[] = await getData(params.slug)
     return (
-        <div className='mt-6 '>
+        <div className='mt-6 max-w-[850px]'>
             {data.map((blog) => (
                 <div key={blog._id} className='flex flex-col gap-4'>
                     <h1 className='text-2xl font-medium'>{blog.title}</h1>
@@ -48,7 +48,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                         className='rounded-[10px]  w-[900px] h-[550px]'
                     />
                     <p className='font-light'>{blog.description}</p>
-                    <div className='prose mt-10'>
+                    <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>
                         <PortableText value={blog.body}></PortableText>
                     </div>
                 </div>
