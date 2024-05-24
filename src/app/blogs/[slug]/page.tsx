@@ -23,17 +23,17 @@ async function getData(slug: string) {
 const page = async ({ params }: { params: { slug: string } }) => {
     const data: simplifiedBlog[] = await getData(params.slug)
     return (
-        <div className='mt-6 max-w-[850px]'>
+        <div className='mt-6 px-3'>
             {data.map((blog) => (
                 <div key={blog._id} className='flex flex-col gap-4'>
                     <h1 className='text-2xl font-medium'>{blog.title}</h1>
                     <Image
                         src={blog.imageUrl}
-                        width={500}
-                        height={500}
+                        width={850}
+                        height={850}
                         alt="tshirt"
                         quality={100}
-                        className='rounded-[10px]  w-[900px] h-[550px]'
+                        className='rounded-[10px]'
                     />
                     <p className='font-light'>{blog.description}</p>
                     <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>

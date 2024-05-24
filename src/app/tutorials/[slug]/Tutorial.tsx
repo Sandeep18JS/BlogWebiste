@@ -47,7 +47,7 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
     }, []);
 
     return (
-        <div className='flex'>
+        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-14 px-3'>
             {/* Tutorial */}
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
@@ -55,11 +55,11 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
                         <h1 className='text-2xl font-medium'>{tutorial.title}</h1>
                         <Image
                             src={tutorial.imageUrl}
-                            width={500}
-                            height={500}
+                            width={850}
+                            height={850}
                             alt="tshirt"
                             quality={100}
-                            className='rounded-[10px] w-[900px] h-[550px]'
+                            className='rounded-[10px] '
                         />
                         <p className='font-light'>{tutorial.description}</p>
                         <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>
@@ -81,7 +81,7 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
             </div>
 
             {/* Table of contents */}
-            <div className='w-[200px] h-[100px] fixed right-10 top-36 text-black space-y-4'>
+            <div className='fixed top-32 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 lg:sticky lg:block space-y-4'>
                 <h1 className='font-semibold'>On this Page</h1>
                 <div className='space-y-4'>
                     {data.map((tutorial) => (

@@ -32,18 +32,18 @@ const Page = async () => {
 export default Page;
 
 const ContentSection = ({ title, data, path }: { title: string, data: simplified[], path: string }) => (
-  <section className='space-y-4'>
+  <section className='space-y-4 px-3'>
     <h1 className='font-semibold text-3xl'>{title}</h1>
-    <div className='grid grid-cols-3 gap-6'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
       {data.map((item) => (
-        <div key={item._id} className='w-[350px] space-y-2 flex flex-col'>
+        <div key={item._id} className='space-y-2 flex flex-col'>
           <Image
             src={item.imageUrl}
             width={500}
             height={500}
             alt={item.title}
             quality={100}
-            className='rounded-[10px] w-[350px] h-[250px]'
+            className='rounded-[10px]'
           />
           <Link href={`/${path}/${item.slug}`}>
             <h1 className='font-semibold text-[18px] hover:underline'>{item.title}</h1>
