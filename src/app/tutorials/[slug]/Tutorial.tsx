@@ -3,18 +3,9 @@ import { PortableText } from '@portabletext/react';
 import React, { useEffect, useRef } from 'react';
 import serializers from '../serializers';
 import Image from 'next/image';
+import { simplifiedTutorial } from '@/types/tutorialpage';
 
 export const revalidate = 30;
-
-export interface simplifiedTutorial {
-    _id: string;
-    title: string;
-    description: string;
-    slug: string;
-    imageUrl: string;
-    body: any;
-    h3Texts: { text: string, key: string }[];
-}
 
 const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
     const allTocRefs = useRef<{ [key: string]: HTMLHeadingElement | null }>({});
@@ -57,7 +48,7 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
 
     return (
         <div className='flex'>
-            {/* Blog */}
+            {/* Tutorial */}
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
                     <div key={tutorial._id} className='flex flex-col gap-4'>

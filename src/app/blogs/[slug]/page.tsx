@@ -1,12 +1,10 @@
 import { client } from '@/lib/sanity';
 import { PortableText } from 'next-sanity';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react'
-
+import { simplifiedBlog } from '@/types/blogpage';
 
 export const revalidate = 30;
-
 
 async function getData(slug: string) {
     const query = `*[_type == "blog" && slug.current=='${slug}']{
@@ -21,16 +19,6 @@ async function getData(slug: string) {
     const data = await client.fetch(query)
     return data
 }
-
-export interface simplifiedBlog {
-    _id: string;
-    title: string;
-    description: string;
-    slug: string;
-    imageUrl: string;
-    body: any
-}
-
 
 const page = async ({ params }: { params: { slug: string } }) => {
     const data: simplifiedBlog[] = await getData(params.slug)
@@ -52,7 +40,6 @@ const page = async ({ params }: { params: { slug: string } }) => {
                         <PortableText value={blog.body}></PortableText>
                     </div>
                 </div>
-
             ))}
         </div>
     )

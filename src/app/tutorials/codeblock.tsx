@@ -1,8 +1,7 @@
 'use client';
-
 import React, { useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { arduinoLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import copy from 'copy-to-clipboard';
 
@@ -25,13 +24,14 @@ const CodeBlock = ({ value }: Props) => {
                 showLineNumbers={true}
                 showInlineLineNumbers={true}
                 language={jsx}
-                style={docco}
-                customStyle={{ padding: '1em', marginBottom: '2em' }}
+                className='border border-border/100'
+                style={arduinoLight}
+                customStyle={{ padding: '1em', marginBottom: '2em', backgroundColor: 'transparent' }}
             >
                 {value.code}
             </SyntaxHighlighter>
             <button
-                className="absolute top-2 right-2 px-6 py-2 bg-white text-gray-800 text-sm rounded-md"
+                className="absolute top-2 right-2 px-6 py-2  border border-border/100 text-sm rounded-md"
                 onClick={handleCopy}
             >
                 {copied ? 'Copied!' : 'Copy'}

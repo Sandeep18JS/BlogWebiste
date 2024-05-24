@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { ModeToggle } from './mode-toggle'
-import { useTheme } from 'next-themes'
 
 type Props = {}
 const Navbar = (props: Props) => {

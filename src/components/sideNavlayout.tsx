@@ -1,9 +1,6 @@
-import { SidebarNav } from "@/components/sidebar-nav"
 import { ScrollArea } from "@/components/scroll-area"
-
-interface SideNavLayoutProps {
-    children: React.ReactNode
-}
+import { SidebarNav } from "./sidebarNav"
+import { SideNavLayoutProps } from "@/types/sidenav"
 
 export default function SideNavLayout({ children }: SideNavLayoutProps) {
     return (

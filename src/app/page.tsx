@@ -1,111 +1,58 @@
 import { client } from '@/lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import { simplified } from '@/types/homepage';
 
 export const revalidate = 30;
 
-async function getBlogData() {
-  const query = `*[_type == "blog"] | order(_createdAt asc){
+async function getContentData(contentType: string) {
+  const query = `*[_type == "${contentType}"] | order(_createdAt asc){
     _id,
     title,
     description,
-      "slug":slug.current ,
-      "imageUrl":images[0].asset->url,
+    "slug":slug.current,
+    "imageUrl":images[0].asset->url,
   }`;
-  const blogdata = await client.fetch(query)
-  return blogdata
+  return await client.fetch(query);
 }
 
-async function getTutorialData() {
-  const query = `*[_type == "tutorial"] | order(_createdAt asc){
-    _id,
-    title,
-    description,
-      "slug":slug.current ,
-      "imageUrl":images[0].asset->url,
-  }`;
-  const tutorialdata = await client.fetch(query)
-  return tutorialdata
-
-}
-
-export interface simplified {
-  _id: string;
-  title: string;
-  description: string;
-  slug: string;
-  imageUrl: string;
-}
-
-const page = async () => {
-  const blogdata: simplified[] = await getBlogData();
-  const tutorialdata: simplified[] = await getTutorialData();
+const Page = async () => {
+  const blogdata = await getContentData('blog');
+  const tutorialdata = await getContentData('tutorial');
 
   return (
-    <>
-      <div className='my-16 space-y-16'>
-        <section className='space-y-4'>
-          <h1 className='font-semibold text-3xl '>Recent Tutorials
-          </h1>
-          <div className='grid grid-cols-3 relative '>
-            {tutorialdata.map((tutorial) => (
-              <div key={tutorial._id} className='w-[350px] space-y-2 flex flex-col'>
-                <Image
-                  src={tutorial.imageUrl}
-                  width={500}
-                  height={500}
-                  alt="tshirt"
-                  quality={100}
-                  className='rounded-[10px]  w-[350px] h-[250px]'
-                />
-                <Link href={`/tutorials/${tutorial.slug}`} >
-                  <h1 className='font-semibold text-[18px] hover:underline'>{tutorial.title}</h1>
-                </Link>
-                <p className='font-light text-gray-700 dark:text-white text-sm text-wrap'>{tutorial.description}</p>
-              </div>
-
-            ))}
-          </div>
-        </section>
-
-        <section className='space-y-4'>
-          <h1 className='font-semibold text-3xl '>Recent Blogs
-          </h1>
-          <div className='grid grid-cols-3 relative '>
-            {blogdata.map((blog) => (
-              <div key={blog._id} className='w-[350px] space-y-2 flex flex-col'>
-                <Image
-                  src={blog.imageUrl}
-                  width={500}
-                  height={500}
-                  alt="tshirt"
-                  quality={100}
-                  className='rounded-[10px]  w-[350px] h-[250px]'
-                />
-                <Link href={`/blogs/${blog.slug}`} >
-                  <h1 className='font-semibold text-[18px] hover:underline'>{blog.title}</h1>
-                </Link>
-                <p className='font-light text-gray-700 dark:text-white text-sm text-wrap'>{blog.description}</p>
-              </div>
-
-            ))}
-          </div>
-        </section>
-
-      </div>
-
-    </>
-  )
+    <div className='my-16 space-y-16'>
+      <ContentSection title="Recent Tutorials" data={tutorialdata} path="tutorials" />
+      <ContentSection title="Recent Blogs" data={blogdata} path="blogs" />
+    </div>
+  );
 }
 
-export default page
+export default Page;
 
-
-
-
-
-
-
+const ContentSection = ({ title, data, path }: { title: string, data: simplified[], path: string }) => (
+  <section className='space-y-4'>
+    <h1 className='font-semibold text-3xl'>{title}</h1>
+    <div className='grid grid-cols-3 gap-6'>
+      {data.map((item) => (
+        <div key={item._id} className='w-[350px] space-y-2 flex flex-col'>
+          <Image
+            src={item.imageUrl}
+            width={500}
+            height={500}
+            alt={item.title}
+            quality={100}
+            className='rounded-[10px] w-[350px] h-[250px]'
+          />
+          <Link href={`/${path}/${item.slug}`}>
+            <h1 className='font-semibold text-[18px] hover:underline'>{item.title}</h1>
+          </Link>
+          <p className='font-light text-gray-700 dark:text-white text-sm'>{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
 
