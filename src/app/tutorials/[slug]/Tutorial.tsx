@@ -19,10 +19,10 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
                         key => allBodyRefs.current[key] === entry.target
                     );
                     if (intersectingKey) {
-                        allTocRefs.current[intersectingKey]!.style.color = "red";
+                        allTocRefs.current[intersectingKey]!.style.color = "#0FA4AF";
                         Object.keys(allTocRefs.current).forEach(key => {
                             if (key !== intersectingKey) {
-                                allTocRefs.current[key]!.style.color = "gray";
+                                allTocRefs.current[key]!.style.color = "";
                             }
                         }
                         );
@@ -89,7 +89,7 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
                             <h3
                                 key={h3Text.key}
                                 id={h3Text.key}
-                                className='text-gray-500 text-sm'
+                                className=' text-sm'
                                 ref={(el) => allTocRefs.current[h3Text.key] = el}
                             >
                                 {h3Text.text}

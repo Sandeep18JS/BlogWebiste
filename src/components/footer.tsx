@@ -7,9 +7,9 @@ type Props = {}
 const Footer = (props: Props) => {
     return (
         <main>
-            <div className='w-full z-50 bg-white dark:bg-[#020817] p-10 space-y-8' >
+            <div className='w-full z-50 bg-[#f7f7f7] dark:bg-[#101014] p-10 space-y-8' >
                 <h1 className="text-4xl text-center font-extrabold">Let's Connect</h1>
-                <div className='flex justify-center'>
+                <div className='flex justify-center '>
                     <Link href="mailto:sandeepvemula408@gmail.com" className='border border-border/90 rounded-lg px-10 py-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black  '>Email</Link>
                 </div>
                 <div className='border-t max-w-3xl mx-auto'></div>
@@ -27,7 +27,7 @@ const Footer = (props: Props) => {
 
                 </div>
             </div>
-            <div className='w-full z-50 border-t border-border/90 bg-white dark:bg-[#020817] p-2'>
+            <div className='w-full z-50 border-t border-border/90 bg-[#f7f7f7] dark:bg-[#101014] p-2'>
                 <h1 className="text-sm text-center font-thin">Copyright 2023 © Sandeep </h1>
             </div>
         </main>
