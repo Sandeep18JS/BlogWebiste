@@ -61,7 +61,7 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
                             quality={100}
                             className='rounded-[10px] '
                         />
-                        <p className='font-light'>{tutorial.description}</p>
+                        <p className='font-light text-justify'>{tutorial.description}</p>
                         <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>
                             <PortableText value={tutorial.body}
                                 components={{

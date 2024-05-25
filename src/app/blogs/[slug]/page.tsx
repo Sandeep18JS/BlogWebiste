@@ -35,7 +35,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                         quality={100}
                         className='rounded-[10px]'
                     />
-                    <p className='font-light'>{blog.description}</p>
+                    <p className='font-light text-justify'>{blog.description}</p>
                     <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>
                         <PortableText value={blog.body}></PortableText>
                     </div>
