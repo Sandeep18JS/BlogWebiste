@@ -1,13 +1,13 @@
 'use client'
 import { PortableText } from '@portabletext/react';
 import React, { useEffect, useRef } from 'react';
-import serializers from '../serializers';
+import serializers from '@/app/tutorials/serializers';
 import Image from 'next/image';
-import { simplifiedTutorial } from '@/types/tutorialpage';
+import { simplified } from '@/types/blogortutorial';
 
 export const revalidate = 30;
 
-const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
+const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
     const allTocRefs = useRef<{ [key: string]: HTMLHeadingElement | null }>({});
     const allBodyRefs = useRef<{ [key: string]: HTMLHeadingElement | null }>({});
 
@@ -47,7 +47,7 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
     }, []);
 
     return (
-        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-14 px-3'>
+        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-14  px-3 lg:px-0'>
             {/* Tutorial */}
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
@@ -102,4 +102,4 @@ const Tutorial = ({ data }: { data: simplifiedTutorial[] }) => {
     );
 }
 
-export default Tutorial;
+export default BlogOrTutorial;

@@ -1,8 +1,9 @@
-export interface simplifiedBlog {
+export interface simplified {
   _id: string;
   title: string;
   description: string;
   slug: string;
   imageUrl: string;
   body: any;
+  h3Texts: { text: string; key: string }[];
 }

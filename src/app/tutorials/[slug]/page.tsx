@@ -1,6 +1,6 @@
 import { client } from '@/lib/sanity';
 import React from 'react'
-import Tutorial from './Tutorial';
+import BlogOrTutorial from '@/components/BlogOrTutorial';
 
 export const revalidate = 30;
 
@@ -25,7 +25,7 @@ async function getData(slug: string) {
 const page = async ({ params }: { params: { slug: string } }) => {
     const data = await getData(params.slug)
     return (
-        <Tutorial data={data} />
+        <BlogOrTutorial data={data} />
     )
 }
 
