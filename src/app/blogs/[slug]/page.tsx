@@ -8,6 +8,7 @@ async function getData(slug: string) {
   const query = `*[_type == "blog" && slug.current=='${slug}']{
         _id,
         title,
+        status,
         description,
           "slug":slug.current ,
           "imageUrl":images[0].asset->url,

@@ -5,5 +5,6 @@ export interface SideNavLayoutProps {
 export interface simplified {
   _id: string;
   title: string;
+  status: string;
   slug: string;
 }

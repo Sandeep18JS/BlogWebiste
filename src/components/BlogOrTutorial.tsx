@@ -53,14 +53,16 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                 {data.map((tutorial) => (
                     <div key={tutorial._id} className='flex flex-col gap-4'>
                         <h1 className='text-2xl font-medium'>{tutorial.title}</h1>
-                        <Image
-                            src={tutorial.imageUrl}
-                            width={850}
-                            height={850}
-                            alt="tshirt"
-                            quality={100}
-                            className='rounded-[10px] '
-                        />
+                        {tutorial.imageUrl ?
+                            <Image
+                                src={tutorial.imageUrl}
+                                width={850}
+                                height={850}
+                                alt="tshirt"
+                                quality={100}
+                                className='rounded-[10px] '
+                            /> : null
+                        }
                         <p className='font-light text-justify'>{tutorial.description}</p>
                         <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>
                             <PortableText value={tutorial.body}

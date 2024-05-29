@@ -37,14 +37,16 @@ const ContentSection = ({ title, data, path }: { title: string, data: simplified
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
       {data.map((item) => (
         <div key={item._id} className='space-y-2 flex flex-col'>
-          <Image
-            src={item.imageUrl}
-            width={500}
-            height={500}
-            alt={item.title}
-            quality={100}
-            className='rounded-[10px]'
-          />
+          {item.imageUrl ?
+            <Image
+              src={item.imageUrl}
+              width={500}
+              height={500}
+              alt={item.title}
+              quality={100}
+              className='rounded-[10px]'
+            /> : null
+          }
           <Link href={`/${path}/${item.slug}`}>
             <h1 className='font-semibold text-[18px] hover:underline'>{item.title}</h1>
           </Link>

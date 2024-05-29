@@ -10,6 +10,18 @@ export default {
       type: 'string',
     },
     {
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'New', value: 'new'},
+          {title: 'None', value: ''},
+        ],
+        layout: 'radio',
+      },
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
