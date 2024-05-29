@@ -18,7 +18,7 @@ const ContentSection = ({ data, path }: { data: simplified[], path: string }) =>
                         /> : null
                     }
                     <Link href={`/${path}/${item.slug}`}>
-                        <h1 className='font-semibold text-[18px] hover:underline'>{item.title}</h1>
+                        <h1 className='font-semibold text-[18px] hover:underline dark:text-[#f0f0f0]'>{item.title}</h1>
                     </Link>
                     <p className='font-light text-gray-700 dark:text-gray-400 text-sm text-justify'>{item.description}</p>
                 </div>

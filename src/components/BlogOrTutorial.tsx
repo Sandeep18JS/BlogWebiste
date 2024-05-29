@@ -52,7 +52,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
                     <div key={tutorial._id} className='flex flex-col gap-4'>
-                        <h1 className='text-2xl font-medium'>{tutorial.title}</h1>
+                        <h1 className='text-2xl font-medium dark:text-[#f0f0f0]'>{tutorial.title}</h1>
                         {tutorial.imageUrl ?
                             <Image
                                 src={tutorial.imageUrl}
@@ -63,14 +63,14 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                                 className='rounded-[10px] '
                             /> : null
                         }
-                        <p className='font-light text-justify text-gray-700 dark:text-gray-400'>{tutorial.description}</p>
+                        <p className=' text-justify text-gray-700 dark:text-gray-400'>{tutorial.description}</p>
                         <div className='prose dark:prose-invert text-gray-700 dark:text-gray-400 mt-10 max-w-[850px] text-justify'>
                             <PortableText value={tutorial.body}
                                 components={{
                                     ...serializers,
                                     block: {
                                         h3: ({ children, value }) => (
-                                            <h3 ref={(el) => allBodyRefs.current[value._key] = el} key={value._key}>
+                                            <h3 className='dark:text-[#f0f0f0]' ref={(el) => allBodyRefs.current[value._key] = el} key={value._key}>
                                                 {children}
                                             </h3>
                                         ),
@@ -83,7 +83,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
             </div>
 
             {/* Table of contents */}
-            <div className='fixed top-32 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 lg:sticky lg:block space-y-4'>
+            <div className='fixed top-32 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 lg:sticky lg:block space-y-4 dark:text-[#f0f0f0]'>
                 <h1 className='font-semibold'>On this Page</h1>
                 <div className='space-y-4'>
                     {data.map((tutorial) => (
@@ -91,7 +91,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                             <h3
                                 key={h3Text.key}
                                 id={h3Text.key}
-                                className=' text-sm'
+                                className='text-sm'
                                 ref={(el) => allTocRefs.current[h3Text.key] = el}
                             >
                                 {h3Text.text}

@@ -21,7 +21,7 @@ const Page = async () => {
   const tutorialdata = await getContentData('tutorial');
 
   return (
-    <div className='my-16 space-y-16'>
+    <div className='my-16 space-y-16 dark:text-[#f0f0f0]'>
       <div className='space-y-4'>
         <div className='flex justify-between px-3'>
           <h1 className='font-semibold text-3xl'>Recent Tutorials</h1>

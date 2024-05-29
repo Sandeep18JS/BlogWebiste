@@ -27,7 +27,7 @@ const SidebarSection = ({ title, data, path }: { title: string, data: simplified
     return (
         <div className="w-full pr-6">
             <div onClick={handleClick} className='flex items-center hover:cursor-pointer'>
-                <h4 className="mb-1 rounded-md pl-2 pr-1 py-1 text-base font-bold ">{title}</h4>
+                <h4 className="mb-1 rounded-md pl-2 pr-1 py-1 text-base font-bold dark:text-[#f0f0f0]">{title}</h4>
                 {toggle ? <ChevronDown strokeWidth={1.5} size={20} /> : <ChevronRight strokeWidth={1.5} size={20} />}
             </div>
             {toggle && data.map((item) => (
