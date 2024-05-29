@@ -1,13 +1,12 @@
 import { client } from '@/lib/sanity';
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
-import { simplified } from '@/types/homepage';
+import ContentSection from '@/components/ContentSection';
+import Link from 'next/link';
 
 export const revalidate = 30;
 
 async function getContentData(contentType: string) {
-  const query = `*[_type == "${contentType}"] | order(_createdAt asc){
+  const query = `*[_type == "${contentType}"][0...3] | order(_createdAt asc){
     _id,
     title,
     description,
@@ -23,38 +22,25 @@ const Page = async () => {
 
   return (
     <div className='my-16 space-y-16'>
-      <ContentSection title="Recent Tutorials" data={tutorialdata} path="tutorials" />
-      <ContentSection title="Recent Blogs" data={blogdata} path="blogs" />
+      <div className='space-y-4'>
+        <div className='flex justify-between px-3'>
+          <h1 className='font-semibold text-3xl'>Recent Tutorials</h1>
+          <Link href='/tutorials' className='underline'>See More</Link>
+        </div>
+        <ContentSection data={tutorialdata} path="tutorials" />
+      </div>
+      <div className='space-y-4'>
+        <div className='flex justify-between px-3'>
+          <h1 className='font-semibold text-3xl'>Recent Blogs</h1>
+          <Link href='/blogs' className='underline'>See More</Link>
+        </div>
+        <ContentSection data={blogdata} path="blogs" />
+      </div>
     </div>
   );
 }
 
 export default Page;
 
-const ContentSection = ({ title, data, path }: { title: string, data: simplified[], path: string }) => (
-  <section className='space-y-4 px-3'>
-    <h1 className='font-semibold text-3xl'>{title}</h1>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-      {data.map((item) => (
-        <div key={item._id} className='space-y-2 flex flex-col'>
-          {item.imageUrl ?
-            <Image
-              src={item.imageUrl}
-              width={500}
-              height={500}
-              alt={item.title}
-              quality={100}
-              className='rounded-[10px]'
-            /> : null
-          }
-          <Link href={`/${path}/${item.slug}`}>
-            <h1 className='font-semibold text-[18px] hover:underline'>{item.title}</h1>
-          </Link>
-          <p className='font-light text-gray-700 dark:text-white text-sm text-justify'>{item.description}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-);
 
 

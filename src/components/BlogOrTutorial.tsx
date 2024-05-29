@@ -47,7 +47,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
     }, []);
 
     return (
-        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-14  px-3 lg:px-0'>
+        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-12  px-3 lg:px-0'>
             {/* Tutorial */}
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
@@ -63,8 +63,8 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                                 className='rounded-[10px] '
                             /> : null
                         }
-                        <p className='font-light text-justify'>{tutorial.description}</p>
-                        <div className='prose dark:prose-invert mt-10 max-w-[850px] text-justify'>
+                        <p className='font-light text-justify text-gray-700 dark:text-gray-400'>{tutorial.description}</p>
+                        <div className='prose dark:prose-invert text-gray-700 dark:text-gray-400 mt-10 max-w-[850px] text-justify'>
                             <PortableText value={tutorial.body}
                                 components={{
                                     ...serializers,
