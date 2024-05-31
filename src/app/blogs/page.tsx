@@ -20,7 +20,7 @@ const Page = async () => {
 
     return (
         <div className='my-16 space-y-4 '>
-            <h1 className='font-semibold text-3xl px-3 dark:text-[#f0f0f0]'>All Blogs</h1>
+            <h1 className='text-3xl  font-bold px-3 dark:text-[#ebebeb]'>All Blogs</h1>
             <ContentSection data={blogdata} path="blogs" />
         </div>
     );

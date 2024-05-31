@@ -52,7 +52,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
                     <div key={tutorial._id} className='flex flex-col gap-4'>
-                        <h1 className='text-2xl font-medium dark:text-[#f0f0f0]'>{tutorial.title}</h1>
+                        <h1 className='text-2xl font-bold dark:text-[#ebebeb]'>{tutorial.title}</h1>
                         {tutorial.imageUrl ?
                             <Image
                                 src={tutorial.imageUrl}
@@ -70,7 +70,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                                     ...serializers,
                                     block: {
                                         h3: ({ children, value }) => (
-                                            <h3 className='dark:text-[#f0f0f0]' ref={(el) => allBodyRefs.current[value._key] = el} key={value._key}>
+                                            <h3 className='dark:text-[#ebebeb]' ref={(el) => allBodyRefs.current[value._key] = el} key={value._key}>
                                                 {children}
                                             </h3>
                                         ),
@@ -83,15 +83,15 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
             </div>
 
             {/* Table of contents */}
-            <div className='fixed top-32 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 lg:sticky lg:block space-y-4 dark:text-[#f0f0f0]'>
-                <h1 className='font-semibold'>On this Page</h1>
+            <div className='fixed top-32 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 lg:sticky lg:block space-y-4 dark:text-[#ebebeb]'>
+                <h1 className='text-lg font-bold'>On this Page</h1>
                 <div className='space-y-4'>
                     {data.map((tutorial) => (
                         tutorial.h3Texts.map((h3Text) => (
                             <h3
                                 key={h3Text.key}
                                 id={h3Text.key}
-                                className='text-sm'
+                                className='text-[15px]'
                                 ref={(el) => allTocRefs.current[h3Text.key] = el}
                             >
                                 {h3Text.text}

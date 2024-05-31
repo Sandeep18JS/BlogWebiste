@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.image-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-hover-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
 @layer base {
   :root {
     --background: 0 0% 97%;
