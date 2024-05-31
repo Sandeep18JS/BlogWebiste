@@ -12,11 +12,13 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
     const allBodyRefs = useRef<{ [key: string]: HTMLHeadingElement | null }>({});
 
     useEffect(() => {
+        const currentBodyRefs = allBodyRefs.current;
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const intersectingKey = Object.keys(allBodyRefs.current).find(
-                        key => allBodyRefs.current[key] === entry.target
+                    const intersectingKey = Object.keys(currentBodyRefs).find(
+                        key => currentBodyRefs[key] === entry.target
                     );
                     if (intersectingKey) {
                         allTocRefs.current[intersectingKey]!.style.color = "#0FA4AF";
@@ -24,21 +26,20 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                             if (key !== intersectingKey) {
                                 allTocRefs.current[key]!.style.color = "";
                             }
-                        }
-                        );
+                        });
                     }
                 }
             });
         });
 
-        Object.values(allBodyRefs.current).forEach(ref => {
+        Object.values(currentBodyRefs).forEach(ref => {
             if (ref) {
                 observer.observe(ref);
             }
         });
 
         return () => {
-            Object.values(allBodyRefs.current).forEach(ref => {
+            Object.values(currentBodyRefs).forEach(ref => {
                 if (ref) {
                     observer.unobserve(ref);
                 }
@@ -47,7 +48,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
     }, []);
 
     return (
-        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-12  px-3 lg:px-0'>
+        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-12 px-3 lg:px-0'>
             {/* Tutorial */}
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
@@ -60,17 +61,21 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                                 height={850}
                                 alt="tshirt"
                                 quality={100}
-                                className='rounded-[10px] '
+                                className='rounded-[10px]'
                             /> : null
                         }
-                        <p className=' text-justify text-gray-700 dark:text-gray-400'>{tutorial.description}</p>
+                        <p className='text-justify text-gray-700 dark:text-gray-400'>{tutorial.description}</p>
                         <div className='prose dark:prose-invert text-gray-700 dark:text-gray-400 mt-10 max-w-[850px] text-justify'>
                             <PortableText value={tutorial.body}
                                 components={{
                                     ...serializers,
                                     block: {
                                         h3: ({ children, value }) => (
-                                            <h3 className='dark:text-[#ebebeb]' ref={(el) => allBodyRefs.current[value._key] = el} key={value._key}>
+                                            <h3 className='dark:text-[#ebebeb]' ref={(el) => {
+                                                const key = value._key as string;
+                                                allBodyRefs.current[key] = el;
+                                                return undefined;
+                                            }} key={value._key}>
                                                 {children}
                                             </h3>
                                         ),
@@ -92,7 +97,10 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                                 key={h3Text.key}
                                 id={h3Text.key}
                                 className='text-[15px]'
-                                ref={(el) => allTocRefs.current[h3Text.key] = el}
+                                ref={(el) => {
+                                    allTocRefs.current[h3Text.key] = el;
+                                    return undefined;
+                                }}
                             >
                                 {h3Text.text}
                             </h3>

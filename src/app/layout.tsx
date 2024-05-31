@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Nunito_Sans } from "next/font/google";
 
-const nunito = Nunito_Sans({ subsets: ["latin"] });
+const nunito = Nunito_Sans({ subsets: ["latin"], display: 'swap' });
 
 export const metadata: Metadata = {
   title: "A Blog Website",

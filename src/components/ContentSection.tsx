@@ -5,8 +5,17 @@ import Link from "next/link";
 
 const ContentSection = ({ data, path }: { data: simplified[], path: string }) => {
     const formatDate = (dateString: string) => {
-        return format(new Date(dateString), 'MMMM dd, yyyy');
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                throw new Error('Invalid date');
+            }
+            return format(date, 'MMMM dd, yyyy');
+        } catch (error) {
+            return 'Invalid Date';
+        }
     };
+
     return (
         <section className='space-y-4 px-3'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
