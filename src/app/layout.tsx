@@ -9,8 +9,11 @@ import { Nunito_Sans } from "next/font/google";
 const nunito = Nunito_Sans({ subsets: ["latin"], display: 'swap' });
 
 export const metadata: Metadata = {
-  title: "A Blog Website",
-  description: "For tutorials of different animations",
+  title: "Sandeep's Blog",
+  description: "Welcome to my blog, Where I share everything I'm learning about on React, Shaders, React Three Fiber, Framer Motion,GSAP and more.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
