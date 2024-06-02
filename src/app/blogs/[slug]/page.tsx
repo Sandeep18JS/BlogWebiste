@@ -11,7 +11,7 @@ async function getData(slug: string) {
         status,
         description,
           "slug":slug.current ,
-          "imageUrl":images[0].asset->url,
+          "Url":urls[0].asset->url,
           body,
           "h3Texts": body[style == "h3"] {
             "text": children[0].text,

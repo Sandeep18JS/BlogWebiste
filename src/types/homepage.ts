@@ -4,5 +4,5 @@ export interface simplified {
   description: string;
   publishedAt: string;
   slug: string;
-  imageUrl: string;
+  Url: string;
 }

@@ -6,11 +6,12 @@ export const revalidate = 30;
 
 async function getContentData() {
     const query = `*[_type == "tutorial"]| order(_createdAt asc){
-    _id,
-    title,
-    description,
-    "slug":slug.current,
-    "imageUrl":images[0].asset->url,
+        _id,
+        title,
+        description,
+        publishedAt,
+        "slug":slug.current,
+        "Url":urls[0].asset->url,
   }`;
     return await client.fetch(query);
 }

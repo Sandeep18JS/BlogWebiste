@@ -4,7 +4,7 @@ export interface simplified {
   status: string;
   description: string;
   slug: string;
-  imageUrl: string;
+  Url: string;
   body: any;
   h3Texts: { text: string; key: string }[];
 }

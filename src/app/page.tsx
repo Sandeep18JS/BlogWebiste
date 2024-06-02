@@ -13,7 +13,7 @@ async function getContentData(contentType: string) {
     description,
     publishedAt,
     "slug":slug.current,
-    "imageUrl":images[0].asset->url,
+    "Url":urls[0].asset->url,
   }`;
   return await client.fetch(query);
 }

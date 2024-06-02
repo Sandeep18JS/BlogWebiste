@@ -38,10 +38,17 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'images',
+      name: 'urls',
       type: 'array',
-      title: 'Blog Image',
-      of: [{type: 'image'}],
+      title: 'Blog ImageVideo',
+      of: [
+        {
+          type: 'image',
+        },
+        {
+          type: 'file',
+        },
+      ],
     },
     {
       name: 'body',
@@ -50,6 +57,15 @@ export default {
       of: [
         {
           type: 'block',
+        },
+        {
+          type: 'code',
+        },
+        {
+          type: 'file',
+        },
+        {
+          type: 'image',
         },
       ],
     },

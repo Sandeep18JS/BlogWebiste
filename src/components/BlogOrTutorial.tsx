@@ -45,6 +45,31 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                 }
             });
         };
+
+    }, []);
+
+
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(video);
+
+        return () => {
+            observer.unobserve(video);
+        };
     }, []);
 
     return (
@@ -54,16 +79,27 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
                 {data.map((tutorial) => (
                     <div key={tutorial._id} className='flex flex-col gap-4'>
                         <h1 className='text-2xl font-bold dark:text-[#ebebeb]'>{tutorial.title}</h1>
-                        {tutorial.imageUrl ?
-                            <Image
-                                src={tutorial.imageUrl}
-                                width={850}
-                                height={850}
-                                alt="tshirt"
-                                quality={100}
-                                className='rounded-[10px]'
-                            /> : null
-                        }
+                        {tutorial.Url ? (
+                            tutorial.Url.endsWith('.mp4') ? (
+                                <video
+                                    ref={videoRef}
+                                    src={tutorial.Url}
+                                    className='w-full my-4 rounded-[10px]'
+                                    muted
+                                    loop
+                                    playsInline
+                                />
+                            ) : (
+                                <Image
+                                    src={tutorial.Url}
+                                    width={850}
+                                    height={850}
+                                    alt={tutorial.title}
+                                    quality={100}
+                                    className='rounded-[10px] '
+                                />
+                            )
+                        ) : null}
                         <p className='text-justify text-gray-700 dark:text-gray-400'>{tutorial.description}</p>
                         <div className='prose dark:prose-invert text-gray-700 dark:text-gray-400 mt-10 max-w-[850px] text-justify'>
                             <PortableText value={tutorial.body}
