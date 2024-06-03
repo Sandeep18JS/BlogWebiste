@@ -19,7 +19,7 @@ const CodeBlock = ({ value }: Props) => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative w-[calc(100vw)] lg:max-w-[850px]">
             <SyntaxHighlighter
                 showLineNumbers={true}
                 showInlineLineNumbers={true}
