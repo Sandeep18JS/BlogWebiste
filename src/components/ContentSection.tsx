@@ -34,15 +34,17 @@ const ContentSection = ({ data, path }: { data: simplified[], path: string }) =>
                     <div key={item._id} className='space-y-2 flex flex-col'>
                         {item.Url ? (
                             item.Url.endsWith('.mp4') ? (
-                                <video
-                                    src={item.Url}
-                                    className='w-full my-4 rounded-[10px] image-hover-effect'
-                                    onMouseEnter={handleMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                    muted
-                                    loop
-                                    playsInline
-                                />
+                                <div className="w-full image-hover-effect rounded-[10px]">
+                                    <video
+                                        src={item.Url}
+                                        className='rounded-[10px]'
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                        muted
+                                        loop
+                                        playsInline
+                                    />
+                                </div>
                             ) : (
                                 <Image
                                     src={item.Url}
