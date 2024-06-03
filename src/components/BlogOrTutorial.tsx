@@ -73,7 +73,7 @@ const BlogOrTutorial = ({ data }: { data: simplified[] }) => {
     }, []);
 
     return (
-        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-12 px-3 lg:px-0'>
+        <div className='flex-1 grid lg:grid-cols-[850px_minmax(0,1fr)] lg:gap-12 px-3 xl:px-0'>
             {/* Tutorial */}
             <div className='mt-6 max-w-[850px]'>
                 {data.map((tutorial) => (
