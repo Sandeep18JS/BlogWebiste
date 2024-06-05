@@ -5,6 +5,7 @@ import SideNavLayout from "@/components/sideNavlayout";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Nunito_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react"
 
 const nunito = Nunito_Sans({ subsets: ["latin"], display: 'swap' });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Navbar />
           <SideNavLayout>
             {children}
+            <Analytics />
           </SideNavLayout>
           <Footer />
         </ThemeProvider>
