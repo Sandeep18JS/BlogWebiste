@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { arduinoLight } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
+// import jsx from 'react-syntax-highlighter/dist/esm/languages/prism/jsx';
 import copy from 'copy-to-clipboard';
 
 interface Props {
@@ -23,7 +23,8 @@ const CodeBlock = ({ value }: Props) => {
             <SyntaxHighlighter
                 showLineNumbers={true}
                 showInlineLineNumbers={true}
-                language={jsx}
+                // language={jsx}
+                language='javascript'
                 className='border border-border/100'
                 style={arduinoLight}
                 customStyle={{ padding: '1em', marginBottom: '2em', backgroundColor: 'transparent' }}
