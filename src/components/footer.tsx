@@ -17,7 +17,7 @@ const Footer = (props: Props) => {
                     <Link href="https://twitter.com/Sandeep_3Dev/" target="_blank" rel="noreferrer">
                         <FaTwitter className="w-[35px] h-[35px] border border-border/90 rounded-full p-1" />
                     </Link>
-                    <Link href="https://github.com/Sandeep18JS" target="_blank" rel="noreferrer">
+                    <Link href="https://github.com/" target="_blank" rel="noreferrer">
                         <FaGithub className="w-[35px] h-[35px] border border-border/90 rounded-full p-1" />
                     </Link>
 
